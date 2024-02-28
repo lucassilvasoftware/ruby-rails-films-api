@@ -6,8 +6,14 @@ Rails.application.routes.draw do
   # get "up" => "rails/health#show", as: :rails_health_check
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :movies, only: [:index, :new, :create]
   resources :user_movies, only: [:create, :update]
+
+  resources :movies, only: [:index, :new, :create, :upload] do
+    collection do
+      get 'upload_page', to: 'movies#upload' # rota para acessar a página de upload
+      post 'process_import', to: 'movies#import' # rota para processar o upload de filmes
+    end
+  end
 
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'

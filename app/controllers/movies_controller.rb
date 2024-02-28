@@ -23,8 +23,10 @@ class MoviesController < ApplicationController
   end
 
   def import
+    # Obtém o ID do usuário atual
+    user_id = current_user.id
     json_data = params[:file].read
-    ImportJob.perform_async(json_data)
+    ImportJob.perform_async(user_id, json_data)
     redirect_to movies_path, notice: "Importação de filmes iniciada."
   end
   

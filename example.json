@@ -1,8 +1,12 @@
 [
     {
+      "title": "Filme 1",
+      "director": "Diretor 1",
+      "rating": "1"
+    },
+    {
       "title": "Filme 2",
-      "director": "Diretor 2",
-      "rating": "8"
+      "director": "Diretor 2"
     }
   ]
   

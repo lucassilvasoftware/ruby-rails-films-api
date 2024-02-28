@@ -10,16 +10,20 @@ class ScoreJob
         director = rating_data['director']
         rating = rating_data['rating'].to_i
 
-        # Encontra o filme pelo título e diretor
-        movie = Movie.find_by(title: title, director: director)
+        if rating.present? # Verifica se há uma classificação presente
+          # Encontra o filme pelo título e diretor
+          movie = Movie.find_by(title: title, director: director)
 
-        if movie.present?
-          # Encontra ou inicializa a relação do usuário com o filme
-          user_movie = UserMovie.find_or_initialize_by(user_id: user_id, movie_id: movie.id)
-          # Atualiza a classificação do usuário para o filme
-          user_movie.update(score: rating)
+          if movie.present?
+            # Encontra ou inicializa a relação do usuário com o filme
+            user_movie = UserMovie.find_or_initialize_by(user_id: user_id, movie_id: movie.id)
+            # Atualiza a classificação do usuário para o filme
+            user_movie.update(score: rating)
+          else
+            puts "Filme '#{title}' dirigido por '#{director}' não encontrado."
+          end
         else
-          puts "Filme '#{title}' dirigido por '#{director}' não encontrado."
+          puts "Classificação não encontrada para o filme '#{title}' dirigido por '#{director}'."
         end
       end
     else

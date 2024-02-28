@@ -33,7 +33,14 @@ class MoviesController < ApplicationController
     DeleteJob.perform_async(json_data)
     redirect_to movies_path, notice: "Exclusão de filmes iniciada."
   end
-  
+
+  def submit_score
+    user_id = current_user.id
+    json_data = params[:file].read
+    ScoreJob.perform_async(json_data, user_id)
+    redirect_to movies_path, notice: "Importação de filmes iniciada."
+  end
+
   private
 
   def movie_params

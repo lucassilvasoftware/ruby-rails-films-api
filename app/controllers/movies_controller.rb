@@ -22,9 +22,7 @@ class MoviesController < ApplicationController
     end
   end
 
-  def import
-    puts "Chamou import"
-    
+  def import    
     # Obtém os dados JSON do parâmetro :json_data
     json_data = params[:json_data]
   
@@ -38,9 +36,19 @@ class MoviesController < ApplicationController
         # Acessa os campos 'title' e 'director' de cada objeto de filme
         title = movie_data['title']
         director = movie_data['director']
+
+        # Cria um novo filme com os dados do JSON
+        @movie = Movie.create(title: title, director: director)
+
   
-        # Imprime o nome do filme e do diretor
-        puts "Filme: #{title}, Diretor: #{director}"
+        # Verifica se houve erro ao criar o filme
+        if @movie.errors.any?
+          # Se ocorrer um erro ao criar o filme, exibe a mensagem de erro
+          puts "Erro ao criar o filme '#{movie_data['title']}': #{@movie.errors}"
+        else
+          # Se o filme for criado com sucesso, exibe uma mensagem de sucesso
+          puts "Filme '#{movie_data['title']}' criado com sucesso!"
+        end
       end
     else
       puts "Nenhum dado JSON fornecido"

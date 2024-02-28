@@ -1,0 +1,34 @@
+<h1>Delete Movie</h1>
+
+<%= form_with(url: exclude_movies_url, multipart: true) do |form| %>
+  <div>
+    <%= form.label :file, "Selecione o arquivo JSON de filmes para exclusão" %>
+    <%= form.file_field :file, id: "delete-file-input" %>
+  </div>
+  <div>
+    <%= form.label :json_data, "Dados JSON" %>
+    <%= form.text_field :json_data, style: "display: none", id: "delete-json-data-field" %>
+  </div>
+  <div>
+    <%= form.submit "Excluir" %>
+  </div>
+<% end %>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const deleteFileInput = document.querySelector('#delete-file-input');
+  const deleteJsonDataField = document.querySelector('#delete-json-data-field');
+
+  deleteFileInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      const jsonData = e.target.result;
+      deleteJsonDataField.value = jsonData;
+    };
+
+    reader.readAsText(file);
+  });
+});
+</script>

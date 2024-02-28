@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -10,10 +12,14 @@ Rails.application.routes.draw do
 
   resources :movies, only: [:index, :new, :create, :upload] do
     collection do
-      get 'upload_page', to: 'movies#upload' # rota para acessar a página de upload
-      post 'process_import', to: 'movies#import' # rota para processar o upload de filmes
+      get 'upload', to: 'movies#upload' # rota para acessar a página de upload
+      get 'delete', to: 'movies#delete' # rota para acessar a página de delete
+      post 'import', to: 'movies#import' # rota para processar o upload de filmes
+      post 'exclude', to: 'movies#exclude' # rota para excluir filmes
     end
   end
+
+  mount Sidekiq::Web => '/sidekiq'
 
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'

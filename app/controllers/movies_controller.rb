@@ -35,10 +35,12 @@ class MoviesController < ApplicationController
   end
 
   def submit_score
-    user_id = current_user.id
     json_data = params[:file].read
-    ScoreJob.perform_async(json_data, user_id)
-    redirect_to movies_path, notice: "Importação de filmes iniciada."
+      # Obtém o ID do usuário atual
+      user_id = current_user.id
+      # Chama o ScoreJob para processar as classificações em massa
+      ScoreJob.perform_async(user_id, json_data)
+      redirect_to movies_path, notice: "Classificações enviadas com sucesso!"
   end
 
   private

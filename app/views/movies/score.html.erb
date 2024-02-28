@@ -1,6 +1,6 @@
 <h1>Mass Rating</h1>
 
-<%= form_with(url: import_movies_path, multipart: true) do |form| %>
+<%= form_with(url: submit_score_movies_path, multipart: true) do |form| %>
   <div>
     <%= form.label :file, "Selecione o arquivo JSON de filmes" %>
     <%= form.file_field :file, id: "json-file" %>

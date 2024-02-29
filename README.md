@@ -32,10 +32,11 @@ Será configurado uma aplicação rails contando com as seguintes funcionalidade
 - Rota para criação de novos usuários
 - Rota para cadastrar novo filme
 - Rotas para dar nota nos filmes
-- Rota para criar filmes em massa (Sidekiq)
-- Rota para dar nota aos filmes em massa (Sidekiq)
-- Rota para excluir filmes e massa (Sidekiq)
-- Exibi a média das notas de cada filme
+- Rota para criar filmes em massa (Sidekiq) ✅
+- Rota para dar nota aos filmes em massa (Sidekiq) ✅ 
+- Rota para excluir filmes e massa (Sidekiq) ✅
+- Executar todas as rotas em segundo plano ✅
+- Exibi a média das notas de cada filme ✅
 
 #### Para rodar o código:
 

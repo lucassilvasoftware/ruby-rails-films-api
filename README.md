@@ -30,5 +30,14 @@ Será configurado uma aplicação rails contando com as seguintes funcionalidade
 
 #### Para rodar o código:
 
+```ruby
+redis-server (para conexão com sidekiq funcionar)
+cd project
+sidekiq
+rails s
+rspec (para testar rotas)
+```
 
-#### Desafio:
+#### Desafio Concluído:
+
+Implementei rotas para importar e submeter notas de filmes em massa, utilizando Sidekiq para execução assíncrona. As rotas suportam payloads JSON para facilitar a integração e garantir uma experiência eficiente aos usuários. Os testes foram escritos com RSpec, garantindo o funcionamento correto das funcionalidades.

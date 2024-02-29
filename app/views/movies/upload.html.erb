@@ -1,55 +1,123 @@
-<h1>Upload Movies</h1>
-
-<%= form_with(url: import_movies_path, multipart: true) do |form| %>
-  <div>
-    <%= form.label :file, "Selecione o arquivo JSON de filmes" %>
-    <%= form.file_field :file, id: "json-file", accept: "application/json", onchange: "showSubmitButton()" %>
-  </div>
-  <div id="submit-button" style="display: none;">
-    <%= form.submit "Enviar" %>
-  </div>
-<% end %>
-
-<script>
-  function showSubmitButton() {
-    var fileInput = document.getElementById('json-file');
-    var submitButtonDiv = document.getElementById('submit-button');
-    
-    if (fileInput && fileInput.files.length > 0) {
-      submitButtonDiv.style.display = 'block';
-    } else {
-      submitButtonDiv.style.display = 'none';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Movies</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
     }
-  }
 
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.querySelector('form');
-  const fileInput = document.querySelector('#json-file');
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-    const file = fileInput.files[0];
-    const formData = new FormData();
-    formData.append('file', file);
+    form {
+      display: flex;
+      flex-direction: column;
+    }
 
-    fetch(form.action, {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        // Se a resposta for bem-sucedida, redirecione ou faça qualquer outra ação necessária
-        window.location.href = '/redirect-url';
+    div {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Upload Movies</h1>
+    <%= form_with(url: import_movies_path, multipart: true) do |form| %>
+      <div>
+        <%= form.label :file, "Selecione o arquivo JSON de filmes" %>
+        <%= form.file_field :file, id: "json-file", accept: "application/json", onchange: "showSubmitButton()" %>
+      </div>
+      <div id="submit-button" style="display: none;">
+        <%= form.submit "Enviar" %>
+      </div>
+    <% end %>
+  </div>
+
+  <script>
+    function showSubmitButton() {
+      var fileInput = document.getElementById('json-file');
+      var submitButtonDiv = document.getElementById('submit-button');
+      
+      if (fileInput && fileInput.files.length > 0) {
+        submitButtonDiv.style.display = 'block';
       } else {
-        // Se houver um erro na resposta, exiba uma mensagem de erro ou faça outra ação necessária
-        console.error('Erro ao enviar o arquivo JSON');
+        submitButtonDiv.style.display = 'none';
       }
-    })
-    .catch(error => {
-      // Se ocorrer um erro durante a solicitação, exiba uma mensagem de erro ou faça outra ação necessária
-      console.error('Erro na solicitação:', error);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form');
+      const fileInput = document.querySelector('#json-file');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+
+        fetch(form.action, {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          if (response.ok) {
+            // Se a resposta for bem-sucedida, redirecione ou faça qualquer outra ação necessária
+            window.location.href = '/redirect-url';
+          } else {
+            // Se houver um erro na resposta, exiba uma mensagem de erro ou faça outra ação necessária
+            console.error('Erro ao enviar o arquivo JSON');
+          }
+        })
+        .catch(error => {
+          // Se ocorrer um erro durante a solicitação, exiba uma mensagem de erro ou faça outra ação necessária
+          console.error('Erro na solicitação:', error);
+        });
+      });
     });
-  });
-});
-</script>
+  </script>
+</body>
+</html>

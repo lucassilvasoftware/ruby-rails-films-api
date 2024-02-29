@@ -1,6 +1,13 @@
-### Desafio para vaga de BackEnd - Foco em Ruby On Rails
+<h6 align="center">
+    <img src="https://github.com/lucassilvasoftware/OxeanbitsRubyTest/assets/54152996/e231a5fc-6ba0-4ea7-8492-f6b47e1dd987" alt="Demo" widht="550" height="470"/>
+</h6>
 
-![image](https://github.com/lucassilvasoftware/OxeanbitsRubyTest/assets/54152996/e231a5fc-6ba0-4ea7-8492-f6b47e1dd987)
+<h2 align="center">
+    Desafio para vaga de BackEnd - Foco em Ruby On Rails
+</h2>
+
+> Status: Finished ✅
+
 
 Objetivo do Desafio:
 

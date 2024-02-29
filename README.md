@@ -15,9 +15,15 @@ O objetivo deste desafio é avaliar suas habilidades no desenvolvimento com o fr
 
 #### Requisitos:
 
-- ruby-3.1.4
-- sqlite3
-- redis-server (pré requisito para rodar o sidekiq) 
+Tecnologia    | Versão
+------------- | -------------
+ruby          | 3.1.4
+sqlite3       | 1.4.0
+redis         | 6.2+
+sidekiq       | 7.0.3
+rspec         | 6.1.0
+
+Se você estiver utilizando linux, será necessário instalar também o pacote redis-server
 
 Clone o projeto e ao executar:
 
@@ -27,12 +33,12 @@ rails db:migrate
 rails db:seed
 ```
 Será configurado uma aplicação rails contando com as seguintes funcionalidades:
-- Usuário padrão admin@rotten e senha admin
-- Página de login
-- Rota para criação de novos usuários
-- Rota para cadastrar novo filme
-- Rotas para dar nota nos filmes
-- Exibi a média das notas de cada filme
+- [x] Usuário padrão admin@rotten e senha admin
+- [x] Página de login
+- [x] Rota para criação de novos usuários
+- [x] Rota para cadastrar novo filme
+- [x] Rotas para dar nota nos filmes
+- [x] Exibi a média das notas de cada filme
 - [x] Rota para criar filmes em massa (Sidekiq)
 - [x] Rota para dar nota aos filmes em massa (Sidekiq)
 - [x] Rota para excluir filmes e massa (Sidekiq)
@@ -40,8 +46,8 @@ Será configurado uma aplicação rails contando com as seguintes funcionalidade
 
 #### Para rodar o código:
 
-1. Inicie o servidor Redis para que a conexão com o Sidekiq funcione corretamente. (Você pode fazer isso executando o comando `redis-server`).
-2. Inicie o Sidekiq para habilitar os workers de segundo plano. (Você pode fazer isso executando o comando `sidekiq`).
+1. Inicie o servidor Redis para que a conexão com o Sidekiq funcione corretamente. (Execute o comando `redis-server`).
+2. Inicie o Sidekiq para habilitar os workers de segundo plano. (Execute o comando `sidekiq`).
 3. Inicie o servidor Rails executando o comando `rails s`.
 4. Execute os testes de rota executando o comando `rspec`.
 

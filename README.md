@@ -41,7 +41,7 @@ Será configurado uma aplicação rails contando com as seguintes funcionalidade
 
 ```ruby
 redis-server (para conexão com sidekiq funcionar)
-sidekiq (dentro do projeto - para habilitar workers de segundo plano)
+sidekiq (para habilitar workers de segundo plano)
 rails s
 rspec (para testar rotas)
 ```

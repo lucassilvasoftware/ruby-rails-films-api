@@ -1,5 +1,7 @@
 ### Desafio para vaga de BackEnd - Foco em Ruby On Rails
 
+![image](https://github.com/lucassilvasoftware/OxeanbitsRubyTest/assets/54152996/e231a5fc-6ba0-4ea7-8492-f6b47e1dd987)
+
 Objetivo do Desafio:
 
 O objetivo deste desafio é avaliar suas habilidades no desenvolvimento com o framework Ruby On Rails, bem como quaisquer integrações necessárias, a implementação de funcionalidades que executam em segundo plano de forma síncrona, a escrita de testes e a criação de uma documentação clara.

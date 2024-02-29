@@ -32,20 +32,20 @@ Será configurado uma aplicação rails contando com as seguintes funcionalidade
 - Rota para criação de novos usuários
 - Rota para cadastrar novo filme
 - Rotas para dar nota nos filmes
-- Rota para criar filmes em massa (Sidekiq) ✅
-- Rota para dar nota aos filmes em massa (Sidekiq) ✅ 
-- Rota para excluir filmes e massa (Sidekiq) ✅
-- Executar todas as rotas em segundo plano ✅
-- Exibi a média das notas de cada filme ✅
+- Exibi a média das notas de cada filme
+- [x] Rota para criar filmes em massa (Sidekiq)
+- [x] Rota para dar nota aos filmes em massa (Sidekiq)
+- [x] Rota para excluir filmes e massa (Sidekiq)
+- [x] Executar todas as rotas em segundo plano
 
 #### Para rodar o código:
 
-```ruby
-redis-server (para conexão com sidekiq funcionar)
-sidekiq (para habilitar workers de segundo plano)
-rails s
-rspec (para testar rotas)
-```
+1. Inicie o servidor Redis para que a conexão com o Sidekiq funcione corretamente. (Você pode fazer isso executando o comando `redis-server`).
+2. Inicie o Sidekiq para habilitar os workers de segundo plano. (Você pode fazer isso executando o comando `sidekiq`).
+3. Inicie o servidor Rails executando o comando `rails s`.
+4. Execute os testes de rota executando o comando `rspec`.
+
+Certifique-se de seguir esses passos na ordem fornecida para garantir que sua aplicação Rails esteja funcionando corretamente.
 
 #### Desafio Concluído:
 

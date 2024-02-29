@@ -1,5 +1,5 @@
 class ImportJob
-  include Sidekiq::Job
+  include Sidekiq::Worker
 
   def perform(user_id, json_data)
     if json_data.present?
@@ -20,9 +20,8 @@ class ImportJob
             puts "Filme '#{title}' criado com sucesso!"
             # Verifica se há uma avaliação disponível e chama o ScoreJob para atualizar a nota do filme
             if movie_data['rating'].present?
-              rating = movie_data['rating'].to_i
               ScoreJob.perform_async(user_id, json_data)
-              puts "Chamando ScoreJob para atualizar a nota do filme '#{title}' para #{rating}"
+              puts "Chamando ScoreJob para atualizar a nota do filme"
             end
           end
         end

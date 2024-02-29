@@ -1,14 +1,27 @@
+<h1>Upload Movies</h1>
+
 <%= form_with(url: import_movies_path, multipart: true) do |form| %>
   <div>
     <%= form.label :file, "Selecione o arquivo JSON de filmes" %>
-    <%= form.file_field :file, id: "json-file" %>
+    <%= form.file_field :file, id: "json-file", accept: "application/json", onchange: "showSubmitButton()" %>
   </div>
-  <div>
+  <div id="submit-button" style="display: none;">
     <%= form.submit "Enviar" %>
   </div>
 <% end %>
 
 <script>
+  function showSubmitButton() {
+    var fileInput = document.getElementById('json-file');
+    var submitButtonDiv = document.getElementById('submit-button');
+    
+    if (fileInput && fileInput.files.length > 0) {
+      submitButtonDiv.style.display = 'block';
+    } else {
+      submitButtonDiv.style.display = 'none';
+    }
+  }
+
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.querySelector('form');
   const fileInput = document.querySelector('#json-file');
@@ -39,5 +52,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-
 </script>

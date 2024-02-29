@@ -1,18 +1,99 @@
-<h1>Movies</h1>
-<%= link_to "Add new", new_movie_path %>
-<%= link_to "Upload Movies", upload_movies_path %>
-<%= link_to "Delete Movies", delete_movies_path %>
-<%= link_to "Rating Movies", score_movies_path %>
-
-<% @movies.each do |movie| %>
-  <div>
-    <h2><%= movie.title %></h2>
-    <p>Director: <%= movie.director %></p>
-    <p>Average Score: <%= movie.average_score %></p>
-    <%= form_for(current_user.user_movies.find_or_initialize_by(movie_id: movie.id), remote: true) do |f| %>
-      <%= f.hidden_field :movie_id, value: movie.id %>
-      <%= f.number_field :score, in: 1..10 %>
-      <%= f.submit "Rate" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .container {
+      width: 80%;
+      margin: 0 auto;
+    }
+    .movie {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 20px;
+      padding: 20px;
+    }
+    .movie h2 {
+      margin-top: 0;
+    }
+    .movie p {
+      margin: 5px 0;
+    }
+    .movie form {
+      display: flex;
+      align-items: center;
+    }
+    .movie form input[type="number"] {
+      margin-right: 10px;
+    }
+    .movie form input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .movie form input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    .links {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .btn-box { 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto
+    }
+    .btn {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      margin: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <h1>Movies</h1>
+  <div class="container">
+  <div class="btn-box">
+    <%= link_to "Add new", new_movie_path, class: "btn" %>
+    <%= link_to "Upload Movies", upload_movies_path, class: "btn" %>
+    <%= link_to "Delete Movies", delete_movies_path, class: "btn" %>
+    <%= link_to "Rating Movies", score_movies_path, class: "btn" %>
+  </div>
+    <% @movies.each do |movie| %>
+      <div class="movie">
+        <h2><%= movie.title %></h2>
+        <p>Director: <%= movie.director %></p>
+        <p>Average Score: <%= movie.average_score %></p>
+        <%= form_for(current_user.user_movies.find_or_initialize_by(movie_id: movie.id), remote: true) do |f| %>
+          <%= f.hidden_field :movie_id, value: movie.id %>
+          <%= f.number_field :score, in: 1..10 %>
+          <%= f.submit "Rate", class: "btn" %>
+        <% end %>
+      </div>
     <% end %>
   </div>
-<% end %>
+</body>
+</html>

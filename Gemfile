@@ -8,6 +8,10 @@ gem "rails", "~> 7.1.3"
 # Lib necessária para realizar comandos em segundo plano
 gem 'sidekiq'
 
+gem 'sidekiq-status'
+require 'sidekiq'
+require 'sidekiq-status'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

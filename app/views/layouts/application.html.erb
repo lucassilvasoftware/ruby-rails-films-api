@@ -56,7 +56,8 @@
       border-radius: 3px;
       cursor: pointer;
       text-decoration: none;
-      font-size: 17px
+      font-size: 17px;
+      margin-right: 10px
     }
 
     input#logout:hover {
@@ -84,16 +85,16 @@
 <body>
   <nav>
     <% if current_user %>
+      <% if request.path == movies_path %>
+        <%= form_tag logout_path, method: :delete do %>
+        <%= submit_tag "Logout", id: "logout" %>
+      <% end %>
+      <% end %>
       <% if current_user.admin? && request.path != new_user_path %>
         <%= link_to "Create User", new_user_path, class: "custom-link" %>
       <% end %>
-      <% if request.path != movies_path %>
+      <% if request.path != movies_path && request.path != root_path   %>
         <%= link_to "Movies", movies_path, class: "custom-link" %>
-      <% end %>
-      <% if request.path == movies_path %>
-      <%= form_tag logout_path, method: :delete do %>
-        <%= submit_tag "Logout", id: "logout" %>
-      <% end %>
       <% end %>
     <% end %>
   </nav>

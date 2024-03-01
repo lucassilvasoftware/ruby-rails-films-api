@@ -1,5 +1,6 @@
 class ImportJob
   include Sidekiq::Worker
+  include Sidekiq::Status::Worker # enables job status tracking
 
   def perform(user_id, json_data)
     if json_data.present?
@@ -18,6 +19,9 @@ class ImportJob
             puts "Erro ao criar o filme '#{title}': #{movie.errors.full_messages.join(', ')}"
           else
             puts "Filme '#{title}' criado com sucesso!"
+            at 100, "FEITO PORRA"
+            at(100)
+            total 100
             # Verifica se há uma avaliação disponível e chama o ScoreJob para atualizar a nota do filme
             if movie_data['rating'].present?
               ScoreJob.perform_async(user_id, json_data)

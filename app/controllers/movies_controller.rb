@@ -23,12 +23,20 @@ class MoviesController < ApplicationController
   end
 
   def import
-    # Obtém o ID do usuário atual
     user_id = current_user.id
     json_data = params[:file].read
-    ImportJob.perform_async(user_id, json_data)
-    redirect_to movies_path, notice: "Importação de filmes iniciada."
-  end
+    job_id = ImportJob.perform_async(user_id, json_data)
+    data = Sidekiq::Status::get_all job_id
+
+    loop do
+      puts "AAAAA"
+      puts Sidekiq::Status::get_all job_id
+      sleep 1
+    end
+
+
+    redirect_to movies_path, notice: "Importação de filmes concluída."
+  end  
   
   def exclude
     json_data = params[:file].read

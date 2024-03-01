@@ -1,5 +1,7 @@
 class ScoreJob
   include Sidekiq::Job
+  include Sidekiq::Status::Worker # enables job status tracking
+
 
   def perform(user_id, json_data)
     if json_data.present?
@@ -26,8 +28,10 @@ class ScoreJob
           puts "Classificação não encontrada para o filme '#{title}' dirigido por '#{director}'."
         end
       end
+
     else
       puts "Nenhum dado JSON fornecido"
     end
   end
+
 end

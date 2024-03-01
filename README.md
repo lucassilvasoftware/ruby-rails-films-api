@@ -72,6 +72,12 @@ Será configurado uma aplicação rails contando com as seguintes funcionalidade
 
 Certifique-se de seguir esses passos na ordem fornecida para garantir que sua aplicação Rails esteja funcionando corretamente.
 
+#### Entendendo o código:
+
+Dentro da estrutura de pastas do aplicativo, a pasta "app" é o coração, onde encontramos diversas subpastas importantes. A pasta "sidekiq" abriga todos os jobs da aplicação, responsáveis por executar tarefas assíncronas de forma eficiente. Enquanto isso, a pasta "middleware" contém o único middleware da aplicação, permitindo o acompanhamento dos jobs em segundo plano, garantindo sua gestão adequada. Além disso, dentro da pasta "app", encontramos os diretórios "models" e "controllers", onde estão definidos os modelos e controladores que formam a lógica de negócios e a interação com o usuário, respectivamente. Essa estrutura bem organizada facilita a manutenção e o desenvolvimento da aplicação.
+
+Dentro da estrutura de pastas do aplicativo, além da pasta "app", também temos a pasta "testes", onde são encontrados os testes escritos com RSpec, garantindo a qualidade e a robustez do código. Já dentro da pasta "config", estão localizados os "initializers", responsáveis por realizar as configurações iniciais da aplicação, como conexões com banco de dados e outras configurações importantes para o funcionamento correto do sistema. Essa organização detalhada e modularizada contribui para uma manutenção mais eficiente e uma melhor escalabilidade do projeto.
+
 #### Desafio Concluído:
 
 Implementei rotas para importar e submeter notas de filmes em massa, utilizando Sidekiq para execução assíncrona. As rotas suportam payloads JSON para facilitar a integração e garantir uma experiência eficiente aos usuários. Os testes foram escritos com RSpec, garantindo o funcionamento correto das funcionalidades.

@@ -90,7 +90,7 @@
         <%= submit_tag "Logout", id: "logout" %>
       <% end %>
       <% end %>
-      <% if current_user.admin? && request.path != new_user_path %>
+      <% if current_user.admin? && request.path != new_user_path && request.path != root_path%>
         <%= link_to "Create User", new_user_path, class: "custom-link" %>
       <% end %>
       <% if request.path != movies_path && request.path != root_path   %>

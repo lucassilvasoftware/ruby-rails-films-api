@@ -1,5 +1,6 @@
 class DeleteJob
   include Sidekiq::Job
+  include Sidekiq::Status::Worker # enables job status tracking
 
   def perform(json_data)
     if json_data.present?

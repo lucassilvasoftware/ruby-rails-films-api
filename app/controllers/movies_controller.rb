@@ -26,30 +26,43 @@ class MoviesController < ApplicationController
     user_id = current_user.id
     json_data = params[:file].read
     job_id = ImportJob.perform_async(user_id, json_data)
-    data = Sidekiq::Status::get_all job_id
 
     loop do
-      puts "AAAAA"
-      puts Sidekiq::Status::get_all job_id
+      data = Sidekiq::Status::get_all job_id
+      puts data["status"]
       sleep 1
+      break if data["status"] == "complete"
     end
-
 
     redirect_to movies_path, notice: "Importação de filmes concluída."
   end  
   
   def exclude
     json_data = params[:file].read
-    DeleteJob.perform_async(json_data)
+    job_id = DeleteJob.perform_async(json_data)
+
+    loop do
+      data = Sidekiq::Status::get_all job_id
+      puts data["status"]
+      sleep 1
+      break if data["status"] == "complete"
+    end
+
     redirect_to movies_path, notice: "Exclusão de filmes iniciada."
   end
 
   def submit_score
     json_data = params[:file].read
-      # Obtém o ID do usuário atual
       user_id = current_user.id
-      # Chama o ScoreJob para processar as classificações em massa
-      ScoreJob.perform_async(user_id, json_data)
+      job_id = ScoreJob.perform_async(user_id, json_data)
+      
+      loop do
+        data = Sidekiq::Status::get_all job_id
+        puts data["status"]
+        sleep 1
+        break if data["status"] == "complete"
+      end
+  
       redirect_to movies_path, notice: "Classificações enviadas com sucesso!"
   end
 

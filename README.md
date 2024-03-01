@@ -8,7 +8,6 @@
 
 > Status: Finished ✅
 
-
 #### Objetivo do Desafio:
 
 O objetivo deste desafio é avaliar suas habilidades no desenvolvimento com o framework Ruby On Rails, bem como quaisquer integrações necessárias, a implementação de funcionalidades que executam em segundo plano de forma síncrona, a escrita de testes e a criação de uma documentação clara.
@@ -62,6 +61,8 @@ Será configurado uma aplicação rails contando com as seguintes funcionalidade
 - [x] Rota para dar nota aos filmes em massa (Sidekiq)
 - [x] Rota para excluir filmes e massa (Sidekiq)
 - [x] Executar todas as rotas em segundo plano
+
+#### Dentro da raiz do projeto existe um arquivo chamado Example.json para testar manualmente as rotas
 
 #### Para rodar o código:
 

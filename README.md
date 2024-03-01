@@ -9,9 +9,25 @@
 > Status: Finished ✅
 
 
-Objetivo do Desafio:
+#### Objetivo do Desafio:
 
 O objetivo deste desafio é avaliar suas habilidades no desenvolvimento com o framework Ruby On Rails, bem como quaisquer integrações necessárias, a implementação de funcionalidades que executam em segundo plano de forma síncrona, a escrita de testes e a criação de uma documentação clara.
+
+#### Métodologia para resolver o desafio
+
+Para começar, comecei analisando cuidadosamente os requisitos fornecidos, garantindo que entendia completamente o que precisava ser feito. Em seguida, configurei meu ambiente de desenvolvimento, garantindo que todas as tecnologias necessárias, como Ruby 3.1.4, SQLite3, Sidekiq e RSpec, estivessem devidamente instaladas e funcionando corretamente.
+
+Com o projeto clonado e configurado, comecei a implementar as funcionalidades requeridas. Criei as rotas necessárias para importar e submeter notas em massa, garantindo que pudessem lidar com payloads JSON, o que facilitaria a integração com outros sistemas. Além disso, integrei o Sidekiq para gerenciar essas tarefas em segundo plano, garantindo que a aplicação permanecesse responsiva e escalável.
+
+Desenvolvi um middleware personalizado para acompanhar o status dos jobs do Sidekiq, garantindo uma gestão eficiente das tarefas em segundo plano.
+
+Além disso, adicionei um CSS básico para melhorar a apresentação visual da aplicação, proporcionando uma experiência mais agradável aos usuários.
+
+Após a implementação das funcionalidades, concentrei-me na criação de testes abrangentes usando o RSpec. Escrevi testes para todas as rotas da API e modelos da aplicação, garantindo que todas as funcionalidades estivessem devidamente testadas e funcionando conforme o esperado.
+
+Por fim, documentei todo o processo de configuração, instruções para execução do projeto e execução dos testes no arquivo README.md. Certifiquei-me de fornecer informações claras sobre como utilizar as novas funcionalidades implementadas, facilitando o entendimento para outros desenvolvedores.
+
+Após revisar cuidadosamente todo o código e a documentação, enviei o projeto finalizado para avaliação, conforme as instruções fornecidas no desafio. Estou ansioso para receber feedback e continuar aprendendo e crescendo como desenvolvedor.
 
 #### Requisitos:
 

@@ -21,9 +21,12 @@ ruby          | 3.1.4
 sqlite3       | 1.4.0
 redis         | 6.2+
 sidekiq       | 7.0.3
+sidekiq-status| 3.0.0
 rspec         | 6.1.0
 
 Se você estiver utilizando linux, será necessário instalar também o pacote redis-server
+
+Foi criado um middleware para trabalhar com sidekiq-status e acompanhar o job até sua conclusão.
 
 Clone o projeto e ao executar:
 

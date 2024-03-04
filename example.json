@@ -1,23 +1,8 @@
 [
     {
-      "title": "Filme 1",
-      "director": "Diretor 1",
-      "rating": "8"
-    },
-    {
-      "title": "Filme 2",
-      "director": "Diretor 2",
-      "rating": "5"
-    },
-    {
       "title": "Filme 3",
       "director": "Diretor 3",
-      "rating": "6"
-    },
-    {
-      "title": "Filme 4",
-      "director": "Diretor 4",
-      "rating": "8"
+      "rating": "9"
     }
   ]
   
